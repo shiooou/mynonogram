@@ -9,7 +9,6 @@ import numpy as np
 import cv2
 import os
 
-x
 def read_images(images):
     array_of_images = []
     for filename in os.listdir(r'./'+images):
@@ -26,7 +25,13 @@ if __name__ == "__main__":
     array_of_images = read_images('images')
     
     for image in array_of_images:
-        cv2.imshow("filename",image)
+        image = cv2.resize(image, (15,15),interpolation=cv2.INTER_AREA)
+        
+        for row in range(15):
+            for column in range(15):
+                image[row][column]=[255,255,255]
+   
+        cv2.imshow("filename", image)
         cv2.waitKey(0)
     cv2.destroyAllWindows()
         
