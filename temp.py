@@ -26,12 +26,20 @@ if __name__ == "__main__":
     
     for image in array_of_images:
         image = cv2.resize(image, (15,15),interpolation=cv2.INTER_AREA)
+        new_image = np.zeros((15, 15, 3))
         
         for row in range(15):
             for column in range(15):
-                image[row][column]=[255,255,255]
+                if np.average(image[row][column],weights=[1,0,0]) >122:
+                    #加權平均
+                    new_image[row][column] = [255, 255, 255]
+                else:
+                    new_image[row][column] = [0, 0, 0]
+      
    
-        cv2.imshow("filename", image)
-        cv2.waitKey(0)
-    cv2.destroyAllWindows()
+        #cv2.imshow('original', image)
+        #cv2.waitKey(0)
+        #cv2.imshow('new',new_image)
+        #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
         
