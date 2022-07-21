@@ -25,19 +25,36 @@ for row in range(15):
 print(bwlist)            
             
 #直的
-r = 0 
+print('直的：',end = '')
+for column in range(15):
+    r = 0
+    for row in range(15):
+        if bwlist[row][column] == 1:
+            r += 1
+            if row == 14 :
+                print(r,end  = '')
+        elif r == 0 :
+            print('',end='')
+        else:
+            print(r,end='')
+            r = 0
+    print('/',end = '')
+#橫的
+print('')
+print('橫的：',end = '')
 for row in range(15):
-    if bwlist[row][8] == 1:
-        r += 1
-        if row == 14 :
-            print(r)
-    elif r == 0 :
-        print('',end='')
-    else:
-        print(r,end='')
-        r = 0
- 
-
+    c = 0
+    for column in range(15):
+        if bwlist[row][column] == 1:
+            c += 1
+            if column == 14:
+                print(c, end = '')
+        elif c == 0:
+            print('', end ='')
+        else:
+            print(c, end = '')
+            c = 0
+    print('/', end = '')
 
 #cv2.imshow('img',img)
 #cv2.waitKey(0)
